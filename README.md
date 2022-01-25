@@ -3,7 +3,7 @@
 ## :computer: Gestão de Eventos culturais 
 
 <a style="display:block;">
-<img src="public/images/img/EV2.png" alt="Covid" width="300px">
+<img src="backend/public/images/img/EV2.png" alt="Covid" width="300px">
 </a>  
 
 

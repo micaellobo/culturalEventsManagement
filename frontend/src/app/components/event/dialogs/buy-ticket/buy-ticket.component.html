@@ -1,0 +1,24 @@
+<h2 class="text-center" mat-dialog-title>Buy Ticket</h2>
+<mat-dialog-content class="mat-typography">
+
+   <div>
+      <span>A Covid Test is required, you can submit now, or later...</span>
+   </div>
+   <div class="center" *ngIf="errors">
+      <div *ngFor="let error of errors" class="alert errors alert-warning alert-dismissible fade show" role="alert">
+         {{error.msg}}
+      </div>
+   </div>
+   <div [formGroup]="fileGroup">
+      <mat-form-field>
+         <ngx-mat-file-input formControlName="file" placeholder="Choose a file"></ngx-mat-file-input>
+         <mat-icon matSuffix>folder</mat-icon>
+      </mat-form-field>
+   </div>
+
+</mat-dialog-content>
+<mat-dialog-actions align="end">
+   <button class="btn btn-primary" mat-button [mat-dialog-close]=false>Cancel</button>
+   <button class="btn btn-primary" (click)="buyTicket()" mat-button [mat-dialog-close]="true"
+      cdkFocusInitial>Confirme</button>
+</mat-dialog-actions>

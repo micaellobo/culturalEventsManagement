@@ -1,0 +1,8 @@
+.btn-info:focus {
+  outline: none;
+  box-shadow: none;
+}
+
+.progress {
+  padding: 0%;
+}

@@ -1,0 +1,32 @@
+###
+POST http://localhost:3000/ticket
+content-type: application/json
+
+{
+   "eventID": "60b2dc69d6ca1905043f618e", 
+   "locationID": "60aee45e862d81067c1d9a34", 
+   "date": "2021-05-25"
+}
+
+###
+PUT http://localhost:3000/ticket/60b17eddf2cb222f74eb80f7
+content-type: application/json
+
+{
+   "status": "canceled" 
+}
+
+###
+GET http://localhost:3000/ticket
+content-type: application/json
+
+###
+GET http://localhost:3000/ticket/60ba6d3d010beb43c8c71e86
+content-type: application/json
+
+###
+GET http://localhost:3000/ticket/byClient/60aeab4f56afdd0d54861be1
+content-type: application/json
+###
+GET http://localhost:3000/ticket//byClientAndStatus/accepted
+content-type: application/json

@@ -1,0 +1,45 @@
+<header class="p-3 bg-dark text-white">
+    <div class="container">
+        <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
+            <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
+                <li><a href="{{homeURL}}" class="nav-link px-2 text-white">Home</a></li>
+                <li><a href="{{aboutUsURL}}" class="nav-link px-2 text-white">About Us</a></li>
+            </ul>
+            <div class="text-end">
+                <a href="/"><button type="button" class="btn btn-outline-danger me-2"
+                        (click)="logout()">Logout</button></a>
+            </div>
+        </div>
+    </div>
+</header>
+
+<div class="d-flex">
+    <ul ngbNav #nav="ngbNav" [(activeId)]="active" class="nav-pills p-4" orientation="vertical">
+        <li ngbNavItem="profile">
+            <a ngbNavLink>Profile</a>
+            <ng-template ngbNavContent>
+
+                <app-client-view-profile [client]="client" (clientOutput)="updateClient($event)">
+                </app-client-view-profile>
+
+            </ng-template>
+        </li>
+        <li ngbNavItem="tickets">
+            <a ngbNavLink>Tickets</a>
+            <ng-template ngbNavContent>
+
+                <app-client-tickets [client]="client"></app-client-tickets>
+
+            </ng-template>
+        </li>
+        <li ngbNavItem="covidTests">
+            <a ngbNavLink>Covid Tests</a>
+            <ng-template ngbNavContent>
+                <app-client-covid-tests [client]="client" (clientOutput)="updateClient($event)">
+                </app-client-covid-tests>
+            </ng-template>
+        </li>
+    </ul>
+
+    <div [ngbNavOutlet]="nav" class="ml-4"></div>
+</div>

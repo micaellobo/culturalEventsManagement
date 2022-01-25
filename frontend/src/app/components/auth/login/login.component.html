@@ -1,0 +1,74 @@
+<header class="p-3 bg-dark text-white">
+  <div class="container">
+    <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
+      <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
+        <li><a href="/" class="nav-link px-2 text-white">Home</a></li>
+        <li><a href="{{promoterURL}}" class="nav-link px-2 text-white">Promoter</a></li>
+        <li><a href="{{aboutUsURL}}" class="nav-link px-2 text-white">About Us</a></li>
+      </ul>
+
+      <form class="col-12 col-lg-auto mb-3 mb-lg-0 me-lg-3">
+        <input type="search" class="form-control form-control-dark" placeholder="Search..." />
+      </form>
+
+      <div *ngIf="isLoggedIn(); then thenBlock else elseBlock"></div>
+      <ng-template #thenBlock>
+        <div class="text-end">
+          <a href="/"><button type="button" class="btn btn-outline-danger me-2" (click)="logout()">Logout</button></a>
+        </div>
+      </ng-template>
+      <ng-template #elseBlock>
+        <div class="text-end">
+          <a [routerLink]="['/login']"><button type="button" class="btn btn-outline-light me-2">Login</button></a>
+          <a [routerLink]="['/register']"><button type="button" class="btn btn-warning">Sign-up</button></a>
+        </div>
+      </ng-template>
+    </div>
+  </div>
+</header>
+
+<div class="card text-center">
+  <div class="card-header">
+    <div class="card-body">
+      <h5 class="card-title">Event Management</h5>
+      <p class="card-text">With our website you are able to manage and control your events with ease.</p>
+    </div>
+  </div>
+</div>
+
+<!-- MESSAGES AND LOGIN-->
+<div class="row justify-content-center">
+  <div class="col-5">
+    <div class="center" *ngIf="errors">
+      <div *ngFor="let error of errors" class="alert errors alert-warning alert-dismissible fade show" role="alert">
+        {{error.msg}}
+      </div>
+    </div>
+
+
+    <h5 class="card-title text-center pt-4">Login</h5>
+    <div class="form-group text-center">
+      <label for="email" class="col-sm-2 col-form-label">Email</label>
+      <div class="col-12">
+        <input type="email" class="form-control" [(ngModel)]='email' />
+      </div>
+    </div>
+    <div class="form-group text-center">
+      <label for="password" class="col-sm-2 col-form-label">Password</label>
+      <div class="col-12">
+        <input type="password" class="form-control" [(ngModel)]='password' />
+      </div>
+    </div>
+    <div class="form-check">
+      <input class="form-check-input" type="radio" [(ngModel)]='role' value="PROMOTER" />
+      <label class="form-check-label" for="radioPromoter"> Promoter </label>
+    </div>
+    <div class="form-check">
+      <input class="form-check-input" type="radio" [(ngModel)]='role' value="CLIENT" />
+      <label class="form-check-label" for="radioClient"> Client </label>
+    </div>
+    <div class="d-grid gap-2">
+      <button (click)="login()" class="btn btn-primary btn-md m-1">Sign in</button>
+    </div>
+  </div>
+</div>

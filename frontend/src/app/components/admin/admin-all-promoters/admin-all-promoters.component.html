@@ -1,0 +1,25 @@
+<div class="container p-3" *ngIf="promoters">
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th scope="col">Name</th>
+                <th scope="col">E-mail</th>
+                <th scope="col"></th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let promoter of promoters">
+                <td>
+                    {{promoter?.name}}
+                </td>
+                <td>
+                    {{promoter?.email}}
+                </td>
+                <td class="overflow-hidden">
+                    <button type="button" class="btn btn-outline-danger"
+                        (click)='rejectPromoter(promoter._id)'>Reject</button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>

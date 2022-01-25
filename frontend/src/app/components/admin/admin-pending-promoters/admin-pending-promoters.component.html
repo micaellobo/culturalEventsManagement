@@ -1,0 +1,30 @@
+<div class="container p-3" *ngIf="promoters">
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th scope="col">Name</th>
+                <th scope="col">E-mail</th>
+                <th scope="col"></th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let promoter of promoters">
+                <td>
+                    {{promoter?.name}}
+                </td>
+                <td>
+                    {{promoter?.email}}
+                </td>
+                <td class="overflow-hidden">
+                    <div ngbDropdown container="body" class="align-items-center">
+                        <button class="btn btn-outline-primary btn-sm" ngbDropdownToggle>Actions</button>
+                        <div ngbDropdownMenu>
+                            <button ngbDropdownItem (click)='acceptPromoter(promoter._id)'>Accept</button>
+                            <button ngbDropdownItem (click)='rejectPromoter(promoter._id)'>Reject</button>
+                        </div>
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>

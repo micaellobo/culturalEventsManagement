@@ -1,0 +1,56 @@
+<table class="table m-4" *ngIf="client">
+   <thead>
+      <tr>
+         <th scope="col">#</th>
+         <th scope="col">Event</th>
+         <th scope="col">Local</th>
+         <th scope="col">Date Event</th>
+         <th *ngIf="status == 'canceled'" scope="col">Cancellation Date</th>
+         <th scope="col">Price</th>
+         <th scope="col">Status</th>
+      </tr>
+   </thead>
+   <tbody>
+      <tr *ngFor="let ticket of ticketTemp; index as i">
+         <th scope="row">{{ ticket?.index }}</th>
+         <td>
+            <img [src]="'http://localhost:3000/images/events/' + ticket?.event?._id + '.png'" class="mr-2"
+               style="width: 4rem">
+            {{ ticket?.event?.name }}
+         </td>
+         <td>{{ ticket?.location.name }}</td>
+         <td>{{ticket?.date.substr(0, 10)}}</td>
+         <td *ngIf="status == 'canceled'"> {{ticket?.updatedAt.substr(0, 10)}}</td>
+         <td>{{ticket?.event?.price}}</td>
+         <td *ngIf="status == 'pending'" class="bg-warning"></td>
+         <td *ngIf="status == 'accepted'" class="bg-success"></td>
+         <td *ngIf="status == 'canceled'" class="bg-danger"></td>
+         <!--   <td>
+        <div class="form-check">
+          <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1">
+          <label class="form-check-label" for="flexRadioDefault1">
+            Cancel
+          </label>
+        </div>
+      </td> -->
+         <td *ngIf="status != 'canceled' && client.status != 'banned'">
+            <button type="button" class="btn btn-outline-danger" (click)='cancelTicket(ticket?._id)'>Cancel</button>
+         </td>
+      </tr>
+   </tbody>
+</table>
+
+
+<div class="justify-content-between">
+   <ngb-pagination class="" [collectionSize]="collectionSize" [(page)]="page" [pageSize]="pageSize"
+      (pageChange)="refreshTickets()">
+   </ngb-pagination>
+
+   <select class="custom-select" style="width: auto" [(ngModel)]="pageSize" (ngModelChange)="refreshTickets()">
+      <option [ngValue]="1">1 items per page</option>
+      <option [ngValue]="2">2 items per page</option>
+      <option [ngValue]="4">4 items per page</option>
+      <option [ngValue]="6">6 items per page</option>
+      <option [ngValue]="10">10 items per page</option>
+   </select>
+</div>

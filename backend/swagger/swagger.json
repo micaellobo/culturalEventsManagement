@@ -1,0 +1,740 @@
+{
+    "swagger": "2.0",
+    "info": {
+      "description": "Swagger demo for the item REST api demonstrated in class.",
+      "version": "1.0.0",
+      "title": "Swagger Event API",
+      "contact": {
+        "email": "paw@estg.ipp.pt"
+      }
+    },
+    "host": "localhost:3000",
+    "basePath": "/",
+    "tags": [
+      {
+        "name": "Admin",
+        "description": "Representation of our admin"
+      },
+      {
+        "name": "Client",
+        "description": "Operations about client"
+      },
+      {
+        "name": "Events",
+        "description": "Operations about events"
+      },
+      {
+        "name": "Ticket",
+        "description": "Operations about Ticket"
+      },
+      {
+        "name": "Auth",
+        "description": "Operations about Index"
+      }
+    ],
+    "schemes": [
+      "http"
+    ],
+    "paths": {
+      "/admin/promoters": {
+        "get": {
+          "tags": [
+            "Admin"
+          ],
+          "summary": "Gets all Promoters",
+          "description": "Gets all Promoters in the database",
+          "consumes": [
+            "application/json"
+          ],
+          "produces": [
+            "application/json"
+          ],
+          "responses": {
+            "200": {
+              "description": "List Promoters",
+              "schema": {
+                "$ref": "#/definitions"
+              }
+            }
+          },
+          "security": [
+            {
+              "item_jwt_auth": []
+            }
+          ]
+        }
+      },
+      "/admin/promotersByStatus/{status}": {
+        "get": {
+          "tags": [
+            "Admin"
+          ],
+          "summary": "Gets all Promoters",
+          "description": "Gets all Promoters in the database",
+          "consumes": [
+            "application/json"
+          ],
+          "parameters": [
+            {
+              "name": "status",
+              "in": "path",
+              "description": "Status promoter",
+              "required": true,
+              "type": "string"
+            }
+          ],
+          "produces": [
+            "application/json"
+          ],
+          "responses": {
+            "200": {
+              "description": "Promoters List",
+              "schema": {
+                "$ref": "#/definitions"
+              }
+            }
+          },
+          "security": [
+            {
+              "item_jwt_auth": []
+            }
+          ]
+        }
+      },
+      "/admin/changePromoterStatus/{id}": {
+        "put": {
+          "tags": [
+            "Admin"
+          ],
+          "summary": "change status of Promoter",
+          "description": "change a valid Promoter on the database.",
+          "consumes": [
+            "application/json"
+          ],
+          "parameters": [
+            {
+              "name": "id",
+              "in": "path",
+              "description": "id promoter",
+              "required": true,
+              "type": "string"
+            }
+          ],
+          "produces": [
+            "application/xml"
+          ],
+          "responses": {
+            "200": {
+              "description": "Promoter changed",
+              "schema": {
+                "$ref": "#/definitions/Auth"
+              }
+            },
+            "400": {
+              "description": "Invalid ID supplied"
+            },
+            "404": {
+              "description": "Pet not found"
+            },
+            "405": {
+              "description": "Validation exception"
+            }
+          },
+          "security": [
+            {
+              "item_jwt_auth": []
+            }
+          ]
+        }
+      },
+      "/client/": {
+        "get": {
+          "tags": [
+            "Client"
+          ],
+          "summary": "find a client",
+          "description": "find a client to the database",
+          "consumes": [
+            "application/json"
+          ],
+          "produces": [
+            "application/json"
+          ],
+          "responses": {
+            "200": {
+              "description": "find Client",
+              "schema": {
+                "$ref": "#/definitions/Client"
+              }
+            },
+            "405": {
+              "description": "Invalid input"
+            }
+          },
+          "security": [
+            {
+              "item_jwt_auth": []
+            }
+          ]
+        }
+      },
+      "/": {
+        "put": {
+          "tags": [
+            "Client"
+          ],
+          "summary": "Update an existing Client",
+          "description": "Updates a valid client on the database.",
+          "consumes": [
+            "application/json"
+          ],
+          "produces": [
+            "application/xml"
+          ],
+          "responses": {
+            "200": {
+              "description": "Client Updated",
+              "schema": {
+                "$ref": "#/definitions/Client"
+              }
+            },
+            "400": {
+              "description": "Invalid ID supplied"
+            },
+            "404": {
+              "description": "Pet not found"
+            },
+            "405": {
+              "description": "Validation exception"
+            }
+          },
+          "security": [
+            {
+              "item_jwt_auth": []
+            }
+          ]
+        }
+      },
+      "/client/pwd/": {
+        "put": {
+          "tags": [
+            "Client"
+          ],
+          "summary": "Update an existing Password",
+          "description": "Updates a valid Password on the database.",
+          "consumes": [
+            "application/json"
+          ],
+          "produces": [
+            "application/xml"
+          ],
+          "responses": {
+            "200": {
+              "description": "Password Updated",
+              "schema": {
+                "$ref": "#/definitions/"
+              }
+            },
+            "400": {
+              "description": "Invalid ID supplied"
+            },
+            "404": {
+              "description": "Pet not found"
+            },
+            "405": {
+              "description": "Validation exception"
+            }
+          },
+          "security": [
+            {
+              "item_jwt_auth": []
+            }
+          ]
+        }
+      },
+      "/client/submitCovidTest/": {
+        "post": {
+          "tags": [
+            "Client"
+          ],
+          "summary": "Create user",
+          "description": "This can only be done by the logged in user.",
+          "operationId": "createUser",
+          "produces": [
+            "application/json"
+          ],
+          "parameters": [
+            {
+              "in": "body",
+              "name": "body",
+              "description": "Created user object",
+              "required": true,
+              "schema": {
+                "$ref": "#/definitions/Client"
+              }
+            }
+          ],
+          "responses": {
+            "default": {
+              "description": "successful operation"
+            }
+          }
+        }
+      },
+      "/event/event-view-details/{id}": {
+        "get": {
+          "tags": [
+            "Events"
+          ],
+          "summary": "find a Event",
+          "description": "find a Event to the database",
+          "consumes": [
+            "application/json"
+          ],
+          "parameters": [
+            {
+              "name": "id",
+              "in": "path",
+              "description": "id event",
+              "required": true,
+              "type": "string"
+            }
+          ],
+          "produces": [
+            "application/json"
+          ],
+          "responses": {
+            "200": {
+              "description": "find Event"
+            },
+            "405": {
+              "description": "Invalid input"
+            }
+          },
+          "security": [
+            {
+              "item_jwt_auth": []
+            }
+          ]
+        }
+      },
+      "/ticket/{id}": {
+        "get": {
+          "tags": [
+            "Ticket"
+          ],
+          "summary": "Find Ticket by client",
+          "description": "Returns the tickets",
+          "produces": [
+            "application/json"
+          ],
+          "parameters": [
+            {
+              "name": "Id",
+              "in": "path",
+              "description": "ID of item to return",
+              "required": true,
+              "type": "string"
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "ticket selected",
+              "schema": {
+                "$ref": "#/definitions"
+              }
+            },
+            "400": {
+              "description": "Invalid ID supplied"
+            },
+            "404": {
+              "description": "Item not found"
+            }
+          },
+          "security": [
+            {
+              "item_jwt_auth": []
+            }
+          ]
+        }
+      },
+      "/ticket/byClient": {
+        "get": {
+          "tags": [
+            "Ticket"
+          ],
+          "summary": "Find Ticket",
+          "description": "Returns the tickets",
+          "produces": [
+            "application/json"
+          ],
+          "responses": {
+            "200": {
+              "description": "Item selected",
+              "schema": {
+                "$ref": "#/definitions"
+              }
+            },
+            "400": {
+              "description": "Invalid ID supplied"
+            },
+            "404": {
+              "description": "Item not found"
+            }
+          },
+          "security": [
+            {
+              "item_jwt_auth": []
+            }
+          ]
+        }
+      },
+      "/ticket/byClientAndStatus/{status}": {
+        "get": {
+          "tags": [
+            "Ticket"
+          ],
+          "summary": "find Ticket by status",
+          "description": "Returns the ticket",
+          "produces": [
+            "application/json"
+          ],
+          "parameters": [
+            {
+              "name": "status",
+              "in": "path",
+              "description": "status of item to return",
+              "required": true,
+              "type": "string"
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "ticket selected",
+              "schema": {
+                "$ref": "#/definitions/Ticket"
+              }
+            },
+            "400": {
+              "description": "Invalid status supplied"
+            },
+            "404": {
+              "description": "Sttus not found"
+            }
+          },
+          "security": [
+            {
+              "item_jwt_auth": []
+            }
+          ]
+        }
+      },
+      "/ticket/": {
+        "post": {
+          "tags": [
+            "Ticket"
+          ],
+          "summary": "create Ticket",
+          "description": "Returns the ticket created",
+          "produces": [
+            "application/json"
+          ],
+          "responses": {
+            "200": {
+              "description": "ticket selected",
+              "schema": {
+                "$ref": "#/definitions/Ticket"
+              }
+            },
+            "400": {
+              "description": "Invalid ID supplied"
+            },
+            "404": {
+              "description": "Item not found"
+            }
+          },
+          "security": [
+            {
+              "item_jwt_auth": []
+            }
+          ]
+        }
+      },
+      "/ticket/cancel/{id}": {
+        "put": {
+          "tags": [
+            "Ticket"
+          ],
+          "summary": "Cancel an Ticket",
+          "description": "Cancel an Ticket from the database",
+          "produces": [
+            "application/json"
+          ],
+          "parameters": [
+            {
+              "name": "Id",
+              "in": "path",
+              "description": "ticket id to cancel",
+              "required": true,
+              "type": "string"
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "ticket cancel",
+              "schema": {
+                "$ref": "#/definitions"
+              }
+            },
+            "400": {
+              "description": "Invalid ID supplied"
+            },
+            "404": {
+              "description": "ticket not found"
+            }
+          },
+          "security": [
+            {
+              "item_jwt_auth": []
+            }
+          ]
+        }
+      },
+      "/register": {
+        "post": {
+          "tags": [
+            "Auth"
+          ],
+          "summary": "Create user",
+          "description": "This can only be done by the logged in user.",
+          "operationId": "createUser",
+          "produces": [
+            "application/json"
+          ],
+          "parameters": [
+            {
+              "in": "body",
+              "name": "body",
+              "description": "Created user object",
+              "required": true,
+              "schema": {
+                "$ref": "#/definitions/Auth"
+              }
+            }
+          ],
+          "responses": {
+            "default": {
+              "description": "successful operation"
+            }
+          }
+        }
+      },
+      "/login": {
+        "post": {
+          "tags": [
+            "Auth"
+          ],
+          "summary": "Logs user into the system",
+          "description": "",
+          "operationId": "loginUser",
+          "produces": [
+            "application/json"
+          ],
+          "parameters": [
+            {
+              "in": "body",
+              "name": "body",
+              "description": "Created Client object",
+              "required": true,
+              "schema": {
+                "$ref": "#/definitions/Auth"
+              }
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "successful operation",
+              "schema": {
+                "type": "string"
+              }
+            },
+            "400": {
+              "description": "Invalid username/password supplied"
+            }
+          }
+        }
+      }
+    },
+    "securityDefinitions": {
+      "item_jwt_auth": {
+        "type": "apiKey",
+        "in": "header",
+        "name": "x-access-token"
+      }
+    },
+    "definitions": {
+      "Event": {
+        "type": "object",
+        "required": [
+          "name",
+          "description"
+        ],
+        "properties": {
+          "_id": {
+            "type": "string"
+          },
+          "name": {
+            "type": "string",
+            "example": "item0"
+          },
+          "description": {
+            "type": "string"
+          },
+          "date": {
+            "type": "date"
+          }
+        }
+      },
+      "Auth": {
+        "type": "object",
+        "required": [
+          "email",
+          "password"
+        ],
+        "properties": {
+          "name": {
+            "type": "string",
+            "example": "name0"
+          },
+          "password": {
+            "type": "string",
+            "example": "12345678"
+          },
+          "password2": {
+            "type": "string",
+            "example": "12345678"
+          },
+          "email": {
+            "type": "string",
+            "example": "flavio-teste-novo@gmail.com"
+          },
+          "role": {
+            "type": "string",
+            "example": "PROMOTER"
+          },
+          "status": {
+            "type": "string",
+            "enum": [
+              "inactive",
+              "banned"
+            ]
+          }
+        }
+      },
+      "Client": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string",
+            "example": "name0"
+          },
+          "email": {
+            "type": "string"
+          },
+          "password": {
+            "type": "string",
+            "example": "123456"
+          },
+          "role": {
+            "type": "string"
+          },
+          "status": {
+            "type": "string",
+            "values": [
+              "active",
+              "banned"
+            ]
+          },
+          "covidTestes": {
+            "type": [
+              "Date"
+            ]
+          }
+        }
+      },
+      "Ticket": {
+        "type": "object",
+        "properties": {
+          "code": {
+            "type": "number",
+            "example": 0
+          },
+          "clientID": {
+            "type": "id",
+            "example": "60c58140c2cef024bf224936"
+          },
+          "event": {
+            "type": "array",
+            "$ref": "#/definitions/Event"
+          },
+          "price": {
+            "type": "number",
+            "example": 30
+          },
+          "status": {
+            "type": "string",
+            "values": [
+              "canceled",
+              "pending",
+              "accepted",
+              "rejected"
+            ]
+          }
+        }
+      },
+      "EventLocation": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string",
+            "example": "Altice Arena"
+          },
+          "capacity": {
+            "type": "number",
+            "example": 1000
+          },
+          "address": {
+            "type": "Object",
+            "number": {
+              "type": "number",
+              "example": 29
+            },
+            "street": {
+              "type": "string",
+              "example": "primeiro de maio"
+            },
+            "city": {
+              "type": "Object",
+              "name": {
+                "type": "string",
+                "example": "Lisboa"
+              },
+              "lat": {
+                "type": "string",
+                "example": "100"
+              },
+              "lng": {
+                "type": "string",
+                "example": "200"
+              }
+            }
+          },
+          "capacityLimitation": {
+            "type": "number",
+            "example": 500
+          }
+        }
+      }
+    }
+  }
+  

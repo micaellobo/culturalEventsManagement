@@ -1,0 +1,42 @@
+###
+#Ver os detalhes de um Cliente
+GET http://localhost:3000/client
+Content-Type: application/json
+x-access-token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYwYWVhYjRmNTZhZmRkMGQ1NDg2MWJlMSIsInJvbGUiOiJDTElFTlQiLCJpYXQiOjE2MjMwMTgwOTcsImV4cCI6MTYyMzAyMTY5N30.TFhLqQYOukIfGcHr-rjZ9HZ8oJlKWJHo-Q2jqbAoWPc
+
+
+
+###
+
+#Editar perfil de um Cliente
+PUT http://localhost:3000/client
+Content-Type: application/json
+x-access-token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYwYWVhYjRmNTZhZmRkMGQ1NDg2MWJlMSIsInJvbGUiOiJDTElFTlQiLCJpYXQiOjE2MjMwMTgwOTcsImV4cCI6MTYyMzAyMTY5N30.TFhLqQYOukIfGcHr-rjZ9HZ8oJlKWJHo-Q2jqbAoWPc
+
+{
+   "name": "Flavio Costa",
+   "email": "flaviojmc8@gmail.com"
+}
+
+###
+
+#Editar password do client
+PUT http://localhost:3000/client/pwd
+Content-Type: application/json
+x-access-token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYwYWVhYjRmNTZhZmRkMGQ1NDg2MWJlMSIsInJvbGUiOiJDTElFTlQiLCJpYXQiOjE2MjMwMTgwOTcsImV4cCI6MTYyMzAyMTY5N30.TFhLqQYOukIfGcHr-rjZ9HZ8oJlKWJHo-Q2jqbAoWPc
+
+{
+   "password": "12345678"
+}
+
+
+# TO LOGIN
+###
+POST http://localhost:3000/login
+content-type: application/json
+
+{
+  "email":"flaviojmc8@gmail.com",
+  "password":"12345678", 
+  "role": "CLIENT"
+}

@@ -1,0 +1,100 @@
+<header class="p-3 bg-dark text-white" *ngIf="event">
+  <div class="container">
+    <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
+      <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
+        <li><a href="{{homeURL}}" class="nav-link px-2 text-white">Home</a></li>
+        <li><a href="{{aboutUsURL}}" class="nav-link px-2 text-white">About Us</a></li>
+      </ul>
+
+      <form class="col-12 col-lg-auto mb-3 mb-lg-0 me-lg-3">
+        <input type="search" class="form-control form-control-dark" placeholder="Search..." />
+      </form>
+
+      <div *ngIf="isLoggedIn(); then thenBlock else elseBlock"></div>
+      <ng-template #thenBlock>
+        <div class="text-end">
+          <a [routerLink]="['/client']"><button type="button" class="btn btn-info m-2">Hello {{user.name}}
+            </button></a>
+          <a href="/"><button type="button" class="btn btn-outline-danger m-2" (click)="logout()">Logout</button></a>
+        </div>
+      </ng-template>
+      <ng-template #elseBlock>
+        <div class="text-end">
+          <a [routerLink]="['/login']" routerLinkActive="router-link-active"><button type="button"
+              class="btn btn-outline-light me-2">Login</button></a>
+          <a [routerLink]="['/register']" routerLinkActive="router-link-active"><button type="button"
+              class="btn btn-warning">Sign-up</button></a>
+        </div>
+      </ng-template>
+
+    </div>
+  </div>
+</header>
+
+<div class="card text-center">
+  <div class="card-body">
+    <h5 class="card-title">Event Details</h5>
+  </div>
+</div>
+
+<br>
+<div class="container" *ngIf="event">
+  <div class="row">
+    <div class="col-6"><img src="http://localhost:3000/images/events/{{event._id}}.png" alt="image" width="100%" />
+    </div>
+    <div class="col-2">
+      <ul class="list-group list-group-flush">
+        <li class="list-group-item">
+          <h4>Name</h4>{{event.name}}
+        </li>
+        <li class="list-group-item">
+          <h4>Description</h4>{{event.description}}
+        </li>
+        <li class="list-group-item">
+          <h4>Price</h4>{{event.price}}€
+        </li>
+      </ul>
+    </div>
+  </div>
+  <br>
+</div>
+
+<div class="container" *ngIf="event">
+  <table class="table">
+    <thead>
+      <tr class="table-secondary">
+        <th class="col-2">Location</th>
+        <th class="col-2">city</th>
+        <th class="col-2">Date</th>
+        <th colspan="2" class="col-2">Weather</th>
+        <th class="col-1"></th>
+      </tr>
+    </thead>
+    <tbody *ngFor="let local of event.locations; index as indexLocal">
+      <tr *ngFor="let date of local.dates; index as indexDate">
+        <td class="content">{{local.name}}</td>
+        <td class="content">{{local.address.city.name}}</td>
+        <td class="content">{{date.date.substr(0, 10)}}</td>
+        <div *ngIf="date.weather.main; then thenBlock else elseBlock"></div>
+        <ng-template #thenBlock>
+          <td class="content">Max: {{date.weather.temp.max}}&ordm;<br>Min:
+            {{date.weather.temp.min}}&ordm;</td>
+          <td class="content imageWeather"><img src="http://openweathermap.org/img/wn/{{date.weather.icon}}@2x.png"
+              alt="">{{date.weather.main}}</td>
+        </ng-template>
+        <ng-template #elseBlock>
+          <td colspan="2">No Weather Available</td>
+        </ng-template>
+        <td>
+          <a>
+            <button class="btn btn-primary" mat-button (click)='openDialog(indexLocal, indexDate)'
+              [disabled]="date.availableTickets==0">Buy</button>
+            <span *ngIf="date.availableTickets==0" class="alert">
+              No available Tickets!
+            </span>
+          </a>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>

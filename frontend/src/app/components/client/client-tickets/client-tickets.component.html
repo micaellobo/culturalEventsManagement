@@ -1,0 +1,28 @@
+<ul ngbNav #nav="ngbNav" [(activeId)]="activeTicket" class="nav-tabs p-4">
+    <li ngbNavItem="pending">
+        <a ngbNavLink>Pending tickets</a>
+        <ng-template ngbNavContent>
+
+            <app-client-list-tickets [client]="client" [status]='statusPending'></app-client-list-tickets>
+
+        </ng-template>
+    </li>
+    <li ngbNavItem="accepted">
+        <a ngbNavLink>Accepted tickets</a>
+        <ng-template ngbNavContent>
+
+            <app-client-list-tickets [client]="client" [status]='statusAccepted'></app-client-list-tickets>
+
+        </ng-template>
+    </li>
+    <li ngbNavItem="canceled">
+        <a ngbNavLink>Canceled tickets</a>
+        <ng-template ngbNavContent>
+
+            <app-client-list-tickets [client]="client" [status]='statusCanceled'></app-client-list-tickets>
+
+        </ng-template>
+    </li>
+</ul>
+
+<div [ngbNavOutlet]="nav" class="mt-2"></div>

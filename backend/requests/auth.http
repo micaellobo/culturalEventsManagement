@@ -1,0 +1,21 @@
+###
+POST http://localhost:3000/register
+content-type: application/json
+
+{
+  "name": "simple",
+  "email":"a@a",
+  "password":"12345678", 
+  "password2":"12345678", 
+  "role": "PROMOTER"
+}
+
+###
+POST http://localhost:3000/login
+content-type: application/json
+
+{
+  "email":"email@example.com",
+  "password":"12345678", 
+  "role": "PROMOTER"
+}

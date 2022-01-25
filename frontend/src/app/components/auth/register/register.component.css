@@ -1,0 +1,8 @@
+.card {
+  word-wrap: normal !important;
+}
+
+.errors {
+  text-align: center;
+  padding-right: 16px;
+}

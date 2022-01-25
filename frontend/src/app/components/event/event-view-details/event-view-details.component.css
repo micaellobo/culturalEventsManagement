@@ -1,0 +1,32 @@
+.table>tbody>tr>td,
+.table>thead>tr>th {
+  border: 0;
+}
+
+td, th {
+  text-align: center;
+  vertical-align: middle;
+}
+
+.btn:focus {
+  outline: none;
+  box-shadow: none;
+}
+
+.dark-modal .modal-content {
+  background-color: #292b2c;
+  color: white;
+}
+
+.dark-modal .close {
+  color: white;
+}
+
+.light-blue-backdrop {
+  background-color: #5cb3fd;
+}
+
+.imageWeather{
+  background-color: rgb(226, 228, 229);
+  width: 5%;
+}

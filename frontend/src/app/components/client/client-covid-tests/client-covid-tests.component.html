@@ -1,0 +1,22 @@
+<div class="container m-4">
+   <div class="row">
+      <div class="col-5">
+         <button class="btn btn-primary" mat-button (click)='openDialog()'>Submit covid-19 test</button>
+      </div>
+   </div>
+</div>
+
+<table mdbTable class="table m-4">
+   <thead>
+     <tr>
+       <th scope="row">#</th>
+       <th scope="row">Date Covid Tests</th>
+     </tr>
+   </thead>
+   <tbody>
+     <tr mdbTableCol *ngFor="let covid of client?.covidTestes; index as i">
+       <td>{{i+1}}</td>
+       <td>{{covid.substr(0, 10)}}</td>
+     </tr>
+   </tbody>
+ </table>

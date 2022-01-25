@@ -1,0 +1,40 @@
+<header class="p-3 bg-dark text-white">
+    <div class="container">
+        <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
+            <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
+                <li><a href="{{homeURL}}" class="nav-link px-2 text-white">Home</a></li>
+                <li><a href="{{aboutUsURL}}" class="nav-link px-2 text-white">About Us</a></li>
+            </ul>
+            <div class="text-end"></div>
+        </div>
+    </div>
+</header>
+
+<nav ngbNav #nav="ngbNav" class="nav-tabs">
+    <ng-container ngbNavItem>
+        <a ngbNavLink>Promoters</a>
+        <ng-template ngbNavContent>
+
+            <app-admin-all-promoters></app-admin-all-promoters>
+
+        </ng-template>
+    </ng-container>
+    <ng-container ngbNavItem>
+        <a ngbNavLink>Pending Promoters</a>
+        <ng-template ngbNavContent>
+
+            <app-admin-pending-promoters></app-admin-pending-promoters>
+
+        </ng-template>
+    </ng-container>
+    <ng-container ngbNavItem>
+        <a ngbNavLink>Change Password</a>
+        <ng-template ngbNavContent>
+
+            <app-admin-change-password></app-admin-change-password>
+
+        </ng-template>
+    </ng-container>
+</nav>
+
+<div [ngbNavOutlet]="nav" class="mt-2"></div>

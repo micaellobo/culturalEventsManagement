@@ -1,0 +1,83 @@
+<header class="p-3 bg-dark text-white">
+  <div class="container">
+    <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
+      <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
+        <li><a href="/" class="nav-link px-2 text-white">Home</a></li>
+        <li><a href="{{promoterURL}}" class="nav-link px-2 text-white">Promoter</a></li>
+        <li><a href="{{aboutUsURL}}" class="nav-link px-2 text-white">About Us</a></li>
+      </ul>
+
+      <form class="col-12 col-lg-auto mb-3 mb-lg-0 me-lg-3">
+        <input type="search" class="form-control form-control-dark" placeholder="Search..." />
+      </form>
+
+      <div *ngIf="isLoggedIn(); then thenBlock else elseBlock"></div>
+      <ng-template #thenBlock>
+        <div class="text-end">
+          <a href="/"><button type="button" class="btn btn-outline-danger me-2" (click)="logout()">Logout</button></a>
+        </div>
+      </ng-template>
+      <ng-template #elseBlock>
+        <div class="text-end">
+          <a [routerLink]="['/login']" routerLinkActive="router-link-active"><button type="button"
+              class="btn btn-outline-light me-2">Login</button></a>
+          <a [routerLink]="['/register']" routerLinkActive="router-link-active"><button type="button"
+              class="btn btn-warning">Sign-up</button></a>
+        </div>
+      </ng-template>
+    </div>
+  </div>
+</header>
+
+<div class="card text-center">
+  <div class="card-body">
+    <h5 class="card-title">Register New User</h5>
+    <p class="card-text">Please enter the fields below to create an account.</p>
+  </div>
+</div>
+
+<div class="col-md-4 m-auto mt-5 mb-5">
+  <div class="center" *ngIf="errors">
+    <div *ngFor="let error of errors" class="errors alert alert-warning alert-dismissible fade show" role="alert">
+      {{error.msg}}
+    </div>
+  </div>
+  <div class="card card-body">
+    <h1 class="mb-3 text-center">
+      <img src="http://localhost:3000/images/img/secure-icon.png" alt="icon" width="15%" />
+    </h1>
+    <div class="form-group">
+      <label for="name" class="col-sm-2 col-form-label">Name</label>
+      <input type="name" id="name" [(ngModel)]="name" class="form-control" placeholder="Enter Name" />
+    </div>
+    <div class="form-group">
+      <label for="email" class="col-sm-2 col-form-label">Email</label>
+      <input type="email" id="email" [(ngModel)]="email" class="form-control" placeholder="Enter Email" />
+    </div>
+    <div class="form-group">
+      <label for="password" class="col-sm-2 col-form-label">Password</label>
+      <input type="password" id="password" [(ngModel)]="password" class="form-control" placeholder="Enter Password" />
+    </div>
+    <div class="form-group">
+      <label for="password2" class="col-sm-6 col-form-label">Confirm Password</label>
+      <input type="password" id="password2" [(ngModel)]="password2" class="form-control"
+        placeholder="Confirm Password" />
+    </div>
+    <div class="form-group p-3 m-1">
+      <div class="row">
+        <div class="form-check">
+          <input class="form-check-input" type="radio" [(ngModel)]="role" value="PROMOTER" />
+          <label class="form-check-label" for="rolePromoter"> Promoter </label>
+        </div>
+        <div class="form-check">
+          <input class="form-check-input" type="radio" [(ngModel)]="role" value="CLIENT" />
+          <label class="form-check-label" for="roleCliente"> Client </label>
+        </div>
+      </div>
+    </div>
+    <div class="center littleMarginTop">
+      <button (click)="register()" class="btn btn-sm btn-primary btn-block=">Sign-in</button>
+    </div>
+    <p class="mt-4">Already have an account? <a [routerLink]="['/login']">Login</a></p>
+  </div>
+</div>

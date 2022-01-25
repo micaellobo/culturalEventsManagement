@@ -1,0 +1,40 @@
+#Ver os detalhes de um evento
+GET http://localhost:3000/event/view/60a429a626221515e0326aa7
+Content-Type: application/json
+x-access-token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYwYmZjNDUyZDViZGRmMzY2NGJkZDE1NCIsInJvbGUiOiJQUk9NT1RFUiIsImlhdCI6MTYyMzI1OTM3MSwiZXhwIjoxNjIzMjYyOTcxfQ.2v6whiWsUSRNOD7eN0lFhhj6tc48d98QMy0fQe_2ZYM
+
+###
+
+#Eliminar um evento
+DELETE http://localhost:3000/event/delete/60a450616fcdcd02e8d545ca
+Content-Type: application/json
+x-access-token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYwYmZjNDUyZDViZGRmMzY2NGJkZDE1NCIsInJvbGUiOiJQUk9NT1RFUiIsImlhdCI6MTYyMzI1OTM3MSwiZXhwIjoxNjIzMjYyOTcxfQ.2v6whiWsUSRNOD7eN0lFhhj6tc48d98QMy0fQe_2ZYM
+
+###
+
+#Listar os eventos de um promotor
+GET http://localhost:3000/event/list
+Content-Type: application/json
+x-access-token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYwYmZjNDUyZDViZGRmMzY2NGJkZDE1NCIsInJvbGUiOiJQUk9NT1RFUiIsImlhdCI6MTYyMzI1OTM3MSwiZXhwIjoxNjIzMjYyOTcxfQ.2v6whiWsUSRNOD7eN0lFhhj6tc48d98QMy0fQe_2ZYM
+
+###
+
+#Listar todos os eventos
+GET http://localhost:3000/event/listAll
+Content-Type: application/json
+x-access-token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYwYmZjNDUyZDViZGRmMzY2NGJkZDE1NCIsInJvbGUiOiJQUk9NT1RFUiIsImlhdCI6MTYyMzI1OTM3MSwiZXhwIjoxNjIzMjYyOTcxfQ.2v6whiWsUSRNOD7eN0lFhhj6tc48d98QMy0fQe_2ZYM
+
+###
+GET http://localhost:3000/event/event-view-details/60c10660f1cf3b38a8ad5d67
+Content-Type: application/json
+
+
+###
+POST http://localhost:3000/login
+content-type: application/json
+
+{
+  "email":"a@a",
+  "password":"12345678", 
+  "role": "PROMOTER"
+}

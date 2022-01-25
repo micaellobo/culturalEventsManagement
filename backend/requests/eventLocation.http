@@ -1,0 +1,51 @@
+###
+
+POST http://localhost:3000/eventLocation/save
+Content-Type: application/json
+x-access-token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYwYTMwOWIzNTAzNDQ3MzQwODM0Mzc3MCIsInJvbGUiOiJQUk9NT1RFUiIsImlhdCI6MTYyMTM4NDE0NiwiZXhwIjoxNjIxNDcwNTQ2fQ.TJSDg7n8rhpmyGEChShzQklXwmGez1JO_xdU_9umtaI
+
+ {
+  "name": "Antonio",
+  "city": "Felgueiras",
+  "street": "testeRua",
+  "number": "100",
+  "capacity": "10000",
+  "capacityLimitation": "50"
+}
+
+###
+
+GET http://localhost:3000/eventLocation/view/60a471a0576e5329c8c94b3e
+Content-Type: application/json
+x-access-token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYwYTMwOWIzNTAzNDQ3MzQwODM0Mzc3MCIsInJvbGUiOiJQUk9NT1RFUiIsImlhdCI6MTYyMTM4NDE0NiwiZXhwIjoxNjIxNDcwNTQ2fQ.TJSDg7n8rhpmyGEChShzQklXwmGez1JO_xdU_9umtaI
+
+
+###
+
+GET http://localhost:3000/eventLocation/list/
+Content-Type: application/json
+x-access-token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYwYTMwOWIzNTAzNDQ3MzQwODM0Mzc3MCIsInJvbGUiOiJQUk9NT1RFUiIsImlhdCI6MTYyMTM4NDE0NiwiZXhwIjoxNjIxNDcwNTQ2fQ.TJSDg7n8rhpmyGEChShzQklXwmGez1JO_xdU_9umtaI
+
+
+###
+
+PUT http://localhost:3000/eventLocation/edit/60a477d5874efd34185f90d7
+Content-Type: application/json
+x-access-token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYwYTMwOWIzNTAzNDQ3MzQwODM0Mzc3MCIsInJvbGUiOiJQUk9NT1RFUiIsImlhdCI6MTYyMTM4NDE0NiwiZXhwIjoxNjIxNDcwNTQ2fQ.TJSDg7n8rhpmyGEChShzQklXwmGez1JO_xdU_9umtaI
+
+
+ {
+  "name": "Antonio2",
+  "city": "Lixa2",
+  "street": "testeRua2",
+  "number": "1002",
+  "capacity": "100002",
+  "capacityLimitation": "502"
+}
+
+###
+
+DELETE  http://localhost:3000/eventLocation/delete/60a471a0576e5329c8c94b3e
+Content-Type: application/json
+x-access-token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYwYTMwOWIzNTAzNDQ3MzQwODM0Mzc3MCIsInJvbGUiOiJQUk9NT1RFUiIsImlhdCI6MTYyMTM4NDE0NiwiZXhwIjoxNjIxNDcwNTQ2fQ.TJSDg7n8rhpmyGEChShzQklXwmGez1JO_xdU_9umtaI
+

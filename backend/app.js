@@ -35,10 +35,9 @@ const connectionsOptions = {
 };
 
 const localMongoDB = 'mongodb://localhost:27017/paw_tp';
-const remoteMongoDB = 'mongodb+srv://paw:paw@cluster0.z4frw.mongodb.net/myFirstDatabase?retryWrites=true&w=majority';
 
 mongoose
-	.connect(remoteMongoDB, connectionsOptions)
+	.connect(localMongoDB, connectionsOptions)
 	.then(() => console.log(' CONNECTED TO DB!'))
 	.catch(() => console.log(' error connecting to DB!'));
 

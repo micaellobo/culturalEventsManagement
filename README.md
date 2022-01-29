@@ -1,4 +1,3 @@
-# Trabalho Pratico PAW
 
 ## :computer: Gestão de Eventos culturais 
 
@@ -112,6 +111,4 @@ Um promotor pode ver gerir os seus eventos e as localizações na página **prom
 * Micael Sampaio
 * Flavio Costa
 
----
 
-**Escola Superior de Tecnologia e Gestão - P.Porto**
